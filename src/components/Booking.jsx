@@ -10,6 +10,7 @@ function Booking() {
     phone: "",
     date: "",
     time: "",
+    occasions: "",
     guests: "",
   };
 
@@ -19,6 +20,7 @@ function Booking() {
     email: Yup.string().email("Invalid email").required("Email is Required"),
     date: Yup.date().required("Date is Required"),
     time: Yup.string().required("Time is Required"),
+    occasion: Yup.string().required("Occasion is Required"),
     guests: Yup.number()
       .min(1, "At least 1 guest")
       .max(20, "Max 20 guests")
@@ -126,6 +128,27 @@ function Booking() {
               />
             </label>
 
+            <label>
+              Occasion
+              <Field
+                as="select"
+                name="occasion"
+                className="w-full p-2 border border-gray-300 rounded"
+              >
+                <option value="">Select an occasion</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Anniversary">Anniversary</option>
+                <option value="Date Night">Date Night</option>
+                <option value="Business Meeting">Business Meeting</option>
+                <option value="Other">Other</option>
+              </Field>
+              <ErrorMessage
+                name="occasion"
+                component="div"
+                className="text-red-500 text-sm"
+              />
+            </label>
+            
             <label>
               Number of Guests
               <Field
